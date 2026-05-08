@@ -40,7 +40,7 @@ export function Hero() {
       <div className="bg-grid" />
       <AnoAI />
       <div className="beam" aria-hidden="true" />
-      <Sparkles baseDensity={60} minSize={0.3} maxSize={1.0} />
+      <Sparkles baseDensity={30} minSize={0.3} maxSize={1.0} />
 
       <div
         className="frame"

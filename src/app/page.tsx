@@ -8,6 +8,7 @@ import { RainingCodeCard, FlickerText } from "@/components/ui/raining-code";
 import { ShutterText, ShutterTextOnScroll } from "@/components/ui/shutter-text";
 import { StarsBackground } from "@/components/ui/stars";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
+import { LazyVideo } from "@/components/ui/lazy-video";
 
 export default function Home() {
   return (
@@ -171,11 +172,8 @@ export default function Home() {
           <div className="work work-grid" style={{ marginTop: 36, perspective: "1000px" }}>
             <TiltCard style={{ gridColumn: "span 7" }} intensity={8}>
               <a href="#">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <LazyVideo
+                  src="/assets/cero.mp4"
                   className="ph"
                   style={{
                     position: "absolute",
@@ -185,9 +183,7 @@ export default function Home() {
                     objectFit: "cover",
                     filter: "saturate(.85) brightness(.85)",
                   }}
-                >
-                  <source src="/assets/cero.mp4" type="video/mp4" />
-                </video>
+                />
                 <div className="glow" />
                 <div className="meta">
                   <div>
@@ -200,11 +196,8 @@ export default function Home() {
             </TiltCard>
             <TiltCard style={{ gridColumn: "span 5" }} intensity={8}>
               <a href="#">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <LazyVideo
+                  src="/assets/marquez.mp4"
                   className="ph"
                   style={{
                     position: "absolute",
@@ -214,9 +207,7 @@ export default function Home() {
                     objectFit: "cover",
                     filter: "saturate(.85) brightness(.85)",
                   }}
-                >
-                  <source src="/assets/marquez.mp4" type="video/mp4" />
-                </video>
+                />
                 <div className="glow" />
                 <div className="meta">
                   <div>
@@ -229,11 +220,8 @@ export default function Home() {
             </TiltCard>
             <TiltCard style={{ gridColumn: "span 5" }} intensity={8}>
               <a href="#">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <LazyVideo
+                  src="/assets/yuta.mp4"
                   className="ph"
                   style={{
                     position: "absolute",
@@ -243,9 +231,7 @@ export default function Home() {
                     objectFit: "cover",
                     filter: "saturate(.85) brightness(.85)",
                   }}
-                >
-                  <source src="/assets/yuta.mp4" type="video/mp4" />
-                </video>
+                />
                 <div className="glow" />
                 <div className="meta">
                   <div>
@@ -258,11 +244,8 @@ export default function Home() {
             </TiltCard>
             <TiltCard style={{ gridColumn: "span 4" }} intensity={8}>
               <a href="#">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <LazyVideo
+                  src="/assets/nuevanet.mp4"
                   className="ph"
                   style={{
                     position: "absolute",
@@ -272,9 +255,7 @@ export default function Home() {
                     objectFit: "cover",
                     filter: "saturate(.85) brightness(.85)",
                   }}
-                >
-                  <source src="/assets/nuevanet.mp4" type="video/mp4" />
-                </video>
+                />
                 <div className="glow" />
                 <div className="meta">
                   <div>
@@ -287,11 +268,8 @@ export default function Home() {
             </TiltCard>
             <TiltCard style={{ gridColumn: "span 3" }} intensity={8}>
               <a href="#">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <LazyVideo
+                  src="/assets/valorant.mp4"
                   className="ph"
                   style={{
                     position: "absolute",
@@ -301,9 +279,7 @@ export default function Home() {
                     objectFit: "cover",
                     filter: "saturate(.85) brightness(.85)",
                   }}
-                >
-                  <source src="/assets/valorant.mp4" type="video/mp4" />
-                </video>
+                />
                 <div className="glow" />
                 <div className="meta">
                   <div>

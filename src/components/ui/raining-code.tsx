@@ -249,7 +249,7 @@ export function RainingCodeCard({ children }: { children: ReactNode }) {
           overflow: "hidden",
         }}
       >
-        <RainingBg count={100} />
+        <RainingBg count={40} />
       </div>
 
       {/* Code content */}
