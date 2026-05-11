@@ -38,13 +38,32 @@ function StarLayer({
   ...props
 }: StarLayerProps) {
   const [boxShadow, setBoxShadow] = React.useState<string>("");
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     setBoxShadow(generateStars(count, starColor));
   }, [count, starColor]);
 
+  React.useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+
+    let isVisible = true;
+
+    const observer = new IntersectionObserver((entries) => {
+      // Intersection observer to pause stars could be implemented here via controls
+    });
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <motion.div
+      ref={containerRef}
       data-slot="star-layer"
       animate={{ y: [0, -2000] }}
       transition={transition}

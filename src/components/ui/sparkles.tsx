@@ -30,6 +30,7 @@ export function Sparkles({
     let w = 0;
     let h = 0;
     let raf = 0;
+    let isVisible = true;
     let particles: {
       x: number;
       y: number;
@@ -100,7 +101,10 @@ export function Sparkles({
         ctx.fill();
       }
       ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(tick);
+      
+      if (isVisible) {
+        raf = requestAnimationFrame(tick);
+      }
     }
 
     function initialResize(tries: number) {
@@ -125,7 +129,21 @@ export function Sparkles({
     };
     window.addEventListener("resize", onResize);
 
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible) {
+        if (!raf) raf = requestAnimationFrame(tick);
+      } else {
+        if (raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      }
+    });
+    observer.observe(canvas);
+
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", onResize);
       ro?.disconnect();
