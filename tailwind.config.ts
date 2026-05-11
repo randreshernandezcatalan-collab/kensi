@@ -15,6 +15,7 @@ const config: Config = {
         "ink-dim": "var(--ink-dim)",
         neon: "var(--neon)",
         line: "var(--line)",
+        glass: "var(--glass)",
       },
       fontFamily: {
         display: ['Anton', 'Impact', 'sans-serif'],
