@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -23,8 +23,14 @@ export const Contact2 = ({
 }: Contact2Props) => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState<string | null>(null);
+  
+  const formRef = useRef<HTMLFormElement>(null);
+  const isSubmitting = useRef(false);
 
   const handleSubmit = async (formData: FormData) => {
+    if (isSubmitting.current) return;
+    isSubmitting.current = true;
+    
     setStatus("loading");
     setMessage(null);
     
@@ -33,10 +39,19 @@ export const Contact2 = ({
     if (result.success) {
       setStatus("success");
       setMessage("¡Mensaje enviado con éxito! Te contactaremos pronto.");
+      formRef.current?.reset(); // Limpia el formulario
+      
+      // Volver al estado idle después de unos segundos para permitir enviar otro mensaje si quieren
+      setTimeout(() => {
+        setStatus("idle");
+        setMessage(null);
+      }, 5000);
     } else {
       setStatus("error");
       setMessage(result.error || "Hubo un error al enviar el mensaje.");
     }
+    
+    isSubmitting.current = false;
   };
 
   return (
@@ -73,7 +88,7 @@ export const Contact2 = ({
             </ul>
           </div>
         </div>
-        <form action={handleSubmit} className="mx-auto flex w-full max-w-md flex-col gap-6 rounded-[28px] border border-line bg-glass p-8 liquid-glass">
+        <form ref={formRef} action={handleSubmit} className="mx-auto flex w-full max-w-md flex-col gap-6 rounded-[28px] border border-line bg-glass p-8 liquid-glass">
           <div className="flex gap-4">
             <div className="grid w-full items-center gap-2">
               <Label htmlFor="firstname" className="font-grotesk uppercase tracking-widest text-[10px]">Nombre</Label>
@@ -105,10 +120,10 @@ export const Contact2 = ({
 
           <button 
             type="submit" 
-            className="btn-neon w-full justify-center mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={status === "loading"}
+            className="btn-neon w-full justify-center mt-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            disabled={status === "loading" || status === "success"}
           >
-            {status === "loading" ? "Enviando..." : "Enviar Mensaje"}
+            {status === "loading" ? "Enviando..." : status === "success" ? "¡Enviado!" : "Enviar Mensaje"}
           </button>
         </form>
       </div>
