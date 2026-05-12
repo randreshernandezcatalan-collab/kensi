@@ -542,18 +542,7 @@ export default function Home() {
               <div className="grotesk" style={{ maxWidth: 340, color: "var(--ink-dim)", fontSize: 14, lineHeight: 1.7 }}>
                 Estudio independiente de diseño y desarrollo web. Trabajamos con marcas que quieren más que una página bonita — quieren resultados.
               </div>
-              <div style={{ marginTop: 24, display: "flex", gap: 10 }}>
-                {[1, 2, 3, 4].map((i) => (
-                  <a
-                    key={i}
-                    className="liquid-glass"
-                    style={{ width: 42, height: 42, borderRadius: 12, display: "grid", placeItems: "center" }}
-                    href="#"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /></svg>
-                  </a>
-                ))}
-              </div>
+
             </div>
 
             <div>

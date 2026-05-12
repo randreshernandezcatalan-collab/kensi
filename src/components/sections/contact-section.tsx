@@ -33,6 +33,46 @@ export const ContactSection = () => {
             }}
           />
 
+          <motion.div
+            className="hidden lg:block"
+            initial={{ opacity: 0, x: 150, y: 50, scale: 0.8 }}
+            whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+            style={{
+              position: "absolute",
+              right: "0%",
+              top: "4%",
+              width: "clamp(280px, 32vw, 520px)",
+              pointerEvents: "none",
+              zIndex: 1,
+            }}
+          >
+            <motion.img 
+              src="/assets/cohete.png" 
+              alt="Cohete" 
+              animate={{ 
+                y: [0, -18, 0], 
+                rotate: [-10, -7, -12, -10],
+                filter: [
+                  "drop-shadow(0 20px 50px rgba(0,0,0,0.5)) drop-shadow(0 0 60px rgba(111,255,0,0.15))",
+                  "drop-shadow(0 25px 40px rgba(0,0,0,0.6)) drop-shadow(0 0 100px rgba(111,255,0,0.45))",
+                  "drop-shadow(0 20px 50px rgba(0,0,0,0.5)) drop-shadow(0 0 60px rgba(111,255,0,0.15))"
+                ]
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{
+                width: "100%",
+                height: "auto",
+                transformOrigin: "center center",
+              }}
+            />
+          </motion.div>
+
           <ScrollReveal delay={0}>
             <div className="eyebrow"><span className="bar" /> 06 · Empezar</div>
           </ScrollReveal>
@@ -55,9 +95,17 @@ export const ContactSection = () => {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
               {isOpen ? "Cerrar formulario" : "Contactanos!!"}
             </button>
-            <a className="btn-ghost magnet" href="#">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M20 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 2.12 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L6.09 9.91a16 16 0 0 0 6 6l1.27-1.3a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 20 16.92Z" /></svg>
-              Agendar llamada
+            <a 
+              className="btn-ghost magnet" 
+              href="https://wa.me/56963126202?text=Hola!%20Me%20gustaría%20saber%20más%20sobre%20sus%20servicios."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+                <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+              </svg>
+              WhatsApp
             </a>
             <span className="avail"><span className="dot" /> Respondemos en &lt; 24 hs</span>
           </div>
